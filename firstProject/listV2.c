@@ -144,12 +144,14 @@ void delete_element(node **head_ref, int value){
     node *prev = NULL;
     node *temp = *head_ref;
 
-       
+    // printf("Before while statement");
+
     while(temp->next != NULL && temp->data != value){
         prev = temp;
         temp = temp->next;
     }
 
+    // printf("After while statement");
 
     if(prev == NULL){//In case of the node be the first. Maybe happen :v
     
@@ -159,11 +161,13 @@ void delete_element(node **head_ref, int value){
     //This "IF" checks if the desired value is at the
     //end of que list. Could be happen :v
     if (temp->next == NULL && temp->data == value){
+
         prev->next = NULL;
 
         free(temp);
     }
     else if (temp->data == value){
+        // printf("Here. Trying do delete.");
 
         prev->next = temp->next;
 
@@ -172,7 +176,7 @@ void delete_element(node **head_ref, int value){
 
     }
     else
-        printf("Value not found. Delete unsuccessful.");
+        printf("Value not found. Delete unsuccessful.\n");
 
 
 }
@@ -213,24 +217,31 @@ void main(){
     delete(&head);
     delete(&head);
 
-    printf("After delete\n\n");
+    printf("\nAfter delete\n");
     show(head);
+    printf("\n");
 
-    printf("\n\nAfter delete first\n\n");
+    printf("\nAfter delete first\n");
     delete_first(&head);
     show(head);
+    printf("\n");
 
-    printf("\n\nAfter insert_after\n\n");
+    printf("\nAfter insert_after\n");
     insert_after(head, 6, 7);
     show(head);
+    printf("\n");
 
-    printf("\n\nAfter insert_at_end\n\n");
+    printf("\nAfter insert_at_end\n");
     insert_at_end(head, 8);
     show(head);
+    printf("\n");
 
-    printf("\n\nAfter delete_element\n\n");
-    delete_element(head, 5);
+    printf("\nAfter delete_element\n");
+    delete_element(&head, 9);
     show(head);
+    printf("\n");
+
+
 }
 
 
